@@ -1,28 +1,41 @@
-function cargarDatos() {
-  fetch("./controllers/traerProductoController.php")
-    .then((response) => response.json())
-    .then((data) => {
-      const tablaDatos = document.getElementById("tablaDatos");
-      tablaDatos.innerHTML = "";
-      data.forEach((row) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td>${row.id}</td>
-            <td>${row.nombre}</td>
-            <td>${row.descripcion}</td>
-            <td>
-                <button class="btn btn-outline-warning">
-                    <ion-icon name="create-outline"></ion-icon>
-                </button>
-                <button class="btn btn-outline-danger" onClick="eliminarProducto(${row.id})">
-                <ion-icon name="trash-outline"></ion-icon>
-                </button>
+function cargarDatos(){
+  fetch('controller/TraerClase.php')
+  .then(response=>response.json())
+  .then(data=>{
+      const tablaDatos=document.getElementById('tablaDatos');
+      tablaDatos.innerHTML='';
+      data.forEach(row => {
+          const tr=document.createElement('tr');
+          tr.innerHTML=`
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="px-6 py-4">${row.codigo}</td>
+            <td class="px-6 py-4">${row.nombre}</td>
+            <td class="px-6 py-4">${row.precio}</td>
+            <td class="px-6 py-4">${row.categoria}</td>
+
+            <td class="flex justify-evenly mt-4">
+              <button id='eliminar' onClick='eliminarClase(${row.codigo})'>
+                <i class="fa-solid fa-pen-to-square text-white hover:text-blue-400"></i>
+              </button>
+
+              <button id='eliminar' onClick='eliminarClase(${row.codigo})'>
+                <i class="fa-solid fa-trash text-white hover:text-red-400"></i>
+              </button>
             </td>
-            `;
-        tablaDatos.appendChild(tr);
+
+      
+              
+            
+          </tr>`;
+
+          tablaDatos.appendChild(tr);
+          
       });
-    });
+  });
 }
+
+cargarDatos()
+
 function eliminarProducto(id) {
   fetch("./controllers/eliminarProductoController.php?id=" + id)
     .then((response) => response.text())

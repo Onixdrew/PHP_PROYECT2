@@ -1,9 +1,9 @@
 <?php
 class Conexion{
-    private $host;
-    private $user;
+    private $host='localhost';
+    private $user='root';
     private $password;
-    private $db;
+    private $db='tiendax';
     private $conexion;
 
     function __construct($hostaux,$useraux,$passwordaux,$dbaux){
