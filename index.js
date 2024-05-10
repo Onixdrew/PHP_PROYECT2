@@ -13,7 +13,7 @@ function cargarDatos(){
             <td class="px-6 py-4">${row.precio}</td>
             <td class="px-6 py-4">${row.categoria}</td>
 
-            <td class="flex justify-evenly mt-4">
+            // <td class="flex justify-evenly mt-4">
               <button id='eliminar' onClick='eliminarClase(${row.codigo})'>
                 <i class="fa-solid fa-pen-to-square text-white hover:text-blue-400"></i>
               </button>
