@@ -1,6 +1,6 @@
 <?php
     include('../models/ProductoDAO.php');
-    $productoDAO = new ProductosDAO();
-    $productos = $productoDAO->traerProducto();
+    $productoDAO = new claseDAO();
+    $productos = $productoDAO->TraerClases();
     print_r(json_encode($productos));
 ?>

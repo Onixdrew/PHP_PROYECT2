@@ -29,13 +29,13 @@ class claseDAO {
 
   
 
-  function eliminarClase($id) {
+  function eliminarClase($codigo) {
     $conexion = new Conexion('localhost', 'root', '', 'tiendax');
 
     try {
       $conn = $conexion->Conectar();
-      $stmt = $conn->prepare("DELETE FROM productos WHERE codigo=:id"); // Using prepared statement for security
-      $stmt->bindParam(':codigo', $id);
+      $stmt = $conn->prepare("DELETE FROM productos WHERE codigo= $codigo"); // Using prepared statement for security
+      $stmt->bindParam(':codigo', $codigo);
       $stmt->execute();
       $conexion->cerrarConexion(); // Ensure connection is closed
     } catch (PDOException $e) {
