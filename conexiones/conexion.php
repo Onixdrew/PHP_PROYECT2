@@ -5,7 +5,7 @@ class Conexion{
 		private $pwd="";
 		private $bd="tiendax";
 
-		function __constructor($hostCon,$userCon,$pwdCon,$bdCon){
+		function __construct($hostCon,$userCon,$pwdCon,$bdCon){
 			$this->host= $hostCon;
 			$this->user= $userCon;
 			$this->pwd= $pwdCon;

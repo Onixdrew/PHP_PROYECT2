@@ -18,8 +18,9 @@
     <title>Tabla PHP</title>
   </head>
   <body>
+    
 
-    <h1 class="text-center text-[2em] font-serif font-bold mt-6">Mis productos</h1>
+    <h1 class="text-center hover:text-green-600 text-[2em] font-serif font-bold mt-6">Mis productos</h1>
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="relative mt-[3vh] ml-[10vw]  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
       <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-100 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
       Agregar
@@ -27,25 +28,25 @@
     </button>
 
 
-    <div class=" mx-auto mt-10 overflow-x-auto shadow-md sm:rounded-lg">
+    
       
-      <table class="w-[80%] mx-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" class="px-3 text-base hover:text-white py-3">Código</th>
-            <th scope="col" class="px-3 text-base hover:text-white py-3">Nombre</th>
-            <th scope="col" class="px-3 text-base hover:text-white py-3">Precio</th>
-            <th scope="col" class="px-3 text-base hover:text-white py-3">Categoria</th>
-            <th scope="col" class="px-3 text-base hover:text-white py-3">Acciones</th>
-          </tr>
+    <table class="w-[60%] mt-7 mx-auto border border-black text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-3 text-base hover:text-white py-3">Código</th>
+          <th scope="col" class="px-3 text-base hover:text-white py-3">Nombre</th>
+          <th scope="col" class="px-3 text-base hover:text-white py-3">Precio</th>
+          <th scope="col" class="px-3 text-base hover:text-white py-3">Categoria</th>
+          <th scope="col" class="px-3 text-base hover:text-white py-3">Acciones</th>
+        </tr>
 
-        </thead>
-        
-        <tbody id="tablaDatos">
+      </thead>
+      
+      <tbody id="tablaDatos">
 
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+    
 
 
     <!-- Modal -->
@@ -134,6 +135,25 @@
     </div>
   </div>
 
+
+    <!-- Modal de confirmación de eliminación -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Estás seguro de que deseas eliminar este producto?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     
     <script src="index.js"></script>
