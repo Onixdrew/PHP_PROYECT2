@@ -14,12 +14,12 @@ class claseDAO {
     $this->categoria = $categ;
   }
 
-  function TraerClases($codigo) {
+  function TraerClases() {
     $conexion = new Conexion('localhost', 'root', '', 'tiendax');
 
     try {
       $conn = $conexion->Conectar();
-      $stmt = $conn->query('SELECT * FROM productos WHERE codigo={$codigo}'); 
+      $stmt = $conn->query('SELECT * FROM productos'); 
       $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $rows; 
       $conexion->cerrarConexion();
@@ -46,27 +46,42 @@ class claseDAO {
   }
 }
 
-function guardarClase($codigo,$nombre,$precio,$categoria) {
-  $conexion = new Conexion('localhost', 'root', '', 'tiendax');
+// function guardarClase($codigo,$nombre,$precio,$categoria) {
+//   $conexion = new Conexion('localhost', 'root', '', 'tiendax');
 
+//   try {
+//     $conn = $conexion->Conectar();
+//     $agregar = $conn->prepare ("INSERT INTO productos (`codigo`,`nombre`,`precio`,`categoria`) VALUES (?, ?, ?)");
+//     $agregar->bindParam(1, $nombre);
+//     $agregar->bindParam(2, $precio);
+//     $agregar->bindParam(3, $categoria);
+//     $stmt->execute();
+//     return "exito, se agrego un nuevo registro" ;
+
+//   } catch (PDOException $e) {
+//     echo "Error al conectar a la base de datos ======>" . $e->getMessage();
+//   }
+// }
+
+
+function TraerClase ($codigo){
+  $conexion = new Conexion ('localhost', 'root', '', 'tiendax');
   try {
-    $conn = $conexion->Conectar();
-    $query = "INSERT INTO producto (codigo,nombre,precio,categoria) VALUES ('{$codigo}','{$nombre}','{$precio}','{$categoria}')";
-    $stmt->$conn->prepare($query);
-    $stmt->execute();
-    return "exito, se agrego un nuevo registro" ;
-
-  } catch (PDOException $e) {
-    echo "Error al conectar a la base de datos ======>" . $e->getMessage();
+      $conn = $conexion->Conectar();
+      $stmt = $conn->query("SELECT * FROM productos WHERE codigo={$codigo}");
+      $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $rows;
+      $conexion->cerrarConexion();
+  } catch(PDOException $e) {
+      echo "error al conectar a la base de datos ======>".$e->getMessage();
   }
 }
-
 
 function agregarClases($codigo,$nombre, $precio, $categoria) {
   $conexion = new Conexion('localhost', 'root', '', 'tiendax');
   try {
       $conn = $conexion->Conectar(); 
-      $agregar = $conn->prepare("INSERT INTO produtos (`codigo`, `nombre`, `precio`, `categoria`) VALUES (?, ?, ?)");
+      $agregar = $conn->prepare("INSERT INTO productos (`codigo`, `nombre`, `precio`, `categoria`) VALUES (?, ?, ?)");
       $agregar->bindParam(1, $codigo);
       $agregar->bindParam(2, $nombre);
       $agregar->bindParam(3, $precio);
@@ -84,10 +99,10 @@ function actualizarClase($codigo,$nombre,$precio,$categoria) {
 
   try {
     $conn = $conexion->Conectar();
-  $query="UPDATE clase SET nombre='$nombre',precio='$precio',categoria='$categoria' WHERE codigo=$codigo";
+  $query="UPDATE productos SET nombre='$nombre',precio='$precio',categoria='$categoria' WHERE codigo=$codigo";
     $stmt = $conn->prepare($query); 
     $stmt->execute();
-  return "Se actulizo Correctamente";
+    return "Se actulizo Correctamente";
     $conexion->cerrarConexion(); 
   } catch (PDOException $e) {
     echo "Error al conectar a la base de datos ======>" . $e->getMessage();
