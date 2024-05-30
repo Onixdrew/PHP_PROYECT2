@@ -1,3 +1,24 @@
+// const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+// const appendAlert = (message, type) => {
+//   const wrapper = document.createElement("div");
+//   wrapper.innerHTML = [
+//     `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+//     `   <div>${message}</div>`,
+//     '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+//     "</div>",
+//   ].join("");
+
+//   alertPlaceholder.append(wrapper);
+// };
+
+// const alertTrigger = document.getElementById("liveAlertBtn");
+// if (alertTrigger) {
+//   alertTrigger.addEventListener("click", () => {
+//     appendAlert("Nice, you triggered this alert message!", "success");
+//   });
+// }
+
+
 function cargarDatos() {
   fetch("./controllers/traerAllClasesController.php")
     .then((response) => response.json())
@@ -141,5 +162,15 @@ function TraerDatos(codigo) {
     
   };
 }
+
+// function mostrarAlerta(mensaje) {
+//   var alerta = document.getElementById("alerMessange");
+//   alerta.innerHTML = mensaje;
+//   alerta.hidden = false;
+
+//   setTimeout(function() {
+//     alerta.hidden = true;
+//   }, 1000); 
+// }
 
 cargarDatos();
